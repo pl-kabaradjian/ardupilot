@@ -23,7 +23,7 @@
 
 extern const AP_HAL::HAL& hal;
 
-#define TRONE_I2C_ADDR 0x30
+#define TRONE_I2C_ADDR 0x31 //0x30 for trone
 
 // registers
 #define TRONE_MEASURE 0x00
