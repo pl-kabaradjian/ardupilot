@@ -26,8 +26,8 @@
 #define RANGEFINDER_PREARM_ALT_MAX_CM           200
 #define RANGEFINDER_PREARM_REQUIRED_CHANGE_CM   50
 
-class AP_RangeFinder_Backend; 
- 
+class AP_RangeFinder_Backend;
+
 class RangeFinder
 {
 public:
@@ -53,7 +53,8 @@ public:
         RangeFinder_TYPE_MBSER  = 13,
         RangeFinder_TYPE_TRONE  = 14,
         RangeFinder_TYPE_PLI2CV3= 15,
-        RangeFinder_TYPE_VL53L0X = 16
+        RangeFinder_TYPE_VL53L0X = 16,
+        RangeFinder_TYPE_TREVO  = 17
     };
 
     enum RangeFinder_Function {
@@ -101,7 +102,7 @@ public:
     AP_Int8  _orientation[RANGEFINDER_MAX_INSTANCES];
 
     static const struct AP_Param::GroupInfo var_info[];
-    
+
     // Return the number of range finder instances
     uint8_t num_sensors(void) const {
         return num_instances;
@@ -203,7 +204,7 @@ private:
     Vector3f pos_offset_zero;   // allows returning position offsets of zero for invalid requests
 
     void detect_instance(uint8_t instance);
-    void update_instance(uint8_t instance);  
+    void update_instance(uint8_t instance);
 
     void update_pre_arm_check(uint8_t instance);
     bool _add_backend(AP_RangeFinder_Backend *driver);
