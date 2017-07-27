@@ -23,7 +23,7 @@
 
 extern const AP_HAL::HAL& hal;
 
-#define TRONE_I2C_ADDR 0x31 //0x30 for trone
+#define TRONE_I2C_ADDR 0x30
 
 // registers
 #define TRONE_MEASURE 0x00
@@ -79,7 +79,7 @@ bool AP_RangeFinder_trone::init(void)
         whoami != TRONE_WHOAMI_VALUE) {
         return false;
     }
-    
+
     if (!measure()) {
         dev->get_semaphore()->give();
         return false;
@@ -125,7 +125,7 @@ bool AP_RangeFinder_trone::collect(uint16_t &distance_cm)
         // bad CRC
         return false;
     }
-    
+
     distance_cm = ((uint16_t(d[0]) << 8) | d[1]) / 10;
 
     return true;
